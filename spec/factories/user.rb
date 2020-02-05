@@ -1,6 +1,8 @@
+require 'faker'
+
 FactoryBot.define do
-  factory :users do
-    name { Faker::StarWars.character }
+  factory :user do
+    name { Faker::Name.name }
     id { Faker::Number.number(1000) }
   end
 end

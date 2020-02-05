@@ -1,4 +1,5 @@
-requre 'rails_helper'
+require 'rails_helper'
+require 'faker'
 
 RSpec.describe 'Trackr API', type: :request do
   let!(:users) { create_list(:user, 10) }
@@ -68,8 +69,7 @@ RSpec.describe 'Trackr API', type: :request do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: ID by can't be blank/)
+        expect(response.body).to match("Validation failed: Id can't be blank")
       end
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe 'Trackr API', type: :request do
     let(:valid_attributes) { { name: 'Gary' } }
 
     context 'when the record exists' do
-      before { put "/users/#{todo_id}", params: valid_attributes }
+      before { put "/users/#{user_id}", params: valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -92,7 +92,7 @@ RSpec.describe 'Trackr API', type: :request do
 
   # Test suite for DELETE /todos/:id
   describe 'DELETE /users/:id' do
-    before { delete "/users/#{todo_id}" }
+    before { delete "/users/#{user_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

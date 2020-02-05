@@ -1,5 +1,7 @@
+require 'faker'
+
 FactoryBot.define do
-  factory :measures do
+  factory :measure do
     height { Faker::Number.number(100) }
     weight { Faker::Number.number(100) }
     bmi { Faker::Number.number(100) }
