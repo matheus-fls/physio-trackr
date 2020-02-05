@@ -1,7 +1,6 @@
 require 'rails_helper'
-require 'faker'
 
-RSpec.describe 'Trackr API', type: :request do
+RSpec.describe 'Users API', type: :request do
   let!(:users) { create_list(:user, 10) }
   let(:user_id) { users.first.id }
 
@@ -62,14 +61,14 @@ RSpec.describe 'Trackr API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/users', params: { name: 'Foobar' } }
+      before { post '/users', params: { id: 666 } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match("Validation failed: Id can't be blank")
+        expect(response.body).to match("Validation failed: Name can't be blank")
       end
     end
   end

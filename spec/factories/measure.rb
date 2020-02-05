@@ -12,5 +12,6 @@ FactoryBot.define do
     thigh { Faker::Number.number(100) }
     calf { Faker::Number.number(100) }
     user_id { Faker::Number.number(100) }
+    id { Faker::Number.number(1000) }
   end
 end
